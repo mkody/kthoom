@@ -27,6 +27,7 @@ let urlsToCache = [
   'images/logo.png',
   'images/logo.svg',
   'index.html',
+  'privacy.html',
   'kthoom.webmanifest',
   'service-worker.js'
 ];
