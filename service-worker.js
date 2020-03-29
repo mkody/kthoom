@@ -7,6 +7,7 @@ let urlsToCache = [
   'code/bitjs/archive/unzip.js',
   'code/bitjs/archive/unrar.js',
   'code/bitjs/archive/untar.js',
+  'code/bitjs/archive/rarvm.js',
   'code/book-binder.js',
   'code/book-events.js',
   'code/book-viewer.js',

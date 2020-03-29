@@ -490,6 +490,7 @@ class KthoomApp {
     let isMenuOpen = this.mainMenu_.isOpen() ;
     let isReadingStackOpen = this.readingStack_.isOpen();
 
+    
     if (isMenuOpen) {
       // If the menu handled the key, then we are done.
       if (this.mainMenu_.handleKeyEvent(evt)) {
@@ -549,7 +550,7 @@ class KthoomApp {
 
     if (evt.ctrlKey || evt.metaKey) return;
 
-    if (getComputedStyle(getElem('progress')).display == 'none') return;
+//    if (getComputedStyle(getElem('progress')).display == 'none') return;
 
     let canKeyNext = ((document.body.offsetWidth+document.body.scrollLeft) / document.body.scrollWidth) >= 1;
     let canKeyPrev = (window.scrollX <= 0);
