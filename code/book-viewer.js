@@ -238,8 +238,8 @@ export class BookViewer {
       left: 0,
       width: bvElem.offsetWidth,
       top: 0,
-      height: window.innerHeight - bvElem.offsetTop,
-      ar: (bvElem.offsetWidth) / (window.innerHeight - bvElem.offsetTop),
+      height: window.innerHeight - bvElem.offsetTop - 10,
+      ar: (bvElem.offsetWidth) / (window.innerHeight - bvElem.offsetTop - 10),
     };
     assert(bv.width, 'bv.width not set');
     assert(bv.height, 'bv.height not set');
