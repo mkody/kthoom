@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>kthoom Comic Reader</title>
+  <title>kthoom - Manga Edition</title>
   <link rel="stylesheet" href="code/kthoom.css" type="text/css" />
-  <link rel="icon" type="image/png" href="images/logo.png" sizes="300x300" />
-  <link rel="apple-touch-icon" href="images/logo.png" />
-  <link rel="manifest" href="kthoom.webmanifest" />
   <link rel="preload" href="code/book.js" crossorigin="use-credentials" as="script" />
   <link rel="preload" href="code/book-viewer.js" crossorigin="use-credentials" as="script" />
   <link rel="preload" href="code/helpers.js" crossorigin="use-credentials" as="script" />
@@ -16,7 +13,17 @@
   <meta charset="utf-8">
   <meta name="Description" content="Open source comic book reader built using web technologies." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#ffff00" />
+  <meta name="theme-color" content="#ef3f33" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="kthoom.webmanifest">
+  <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#ef3f33">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
 
   <!-- The crossorigin attribute is needed so that credentials are forwarded through UberProxy -->
   <script type="module" src="code/main.js" crossorigin="use-credentials"></script>
@@ -26,7 +33,7 @@
 </head>
 
 <body>
-  <div id="background" style="background-image: url('images/logo.svg')"></div>
+  <div id="background" style="background-image: url('images/safari-pinned-tab.svg')"></div>
   <div class="foreground">
     <div id="header">
       <button id="main-menu-button" class="menuButton invisibleinfullscreen" tabindex="0" aria-haspopup="true" aria-expanded="false"
@@ -49,8 +56,8 @@
               <polygon fill="#aaaa00" points="15,0 30,0 15,20 0,20"></polygon>
             </pattern>
             <pattern id="layout_progress_pattern" width="30" height="20" patternUnits="userSpaceOnUse">
-              <rect width="100%" height="100%" fill="#cc2929"></rect>
-              <polygon fill="#ffff00" points="15,0 30,0 15,20 0,20"></polygon>
+              <rect width="100%" height="100%" fill="#2b5876"></rect>
+              <polygon fill="#4e4376" points="15,0 30,0 15,20 0,20"></polygon>
             </pattern>
           </defs>
           <g>
@@ -101,13 +108,13 @@
     <div id="bookViewer">
       <svg id="pages" style="display:none">
         <g id="bvViewport">
-          <g id="page1">
-            <image id="page1Image"></image>
-            <foreignObject id="page1Html"></foreignObject>
-          </g>
           <g id="page2">
             <image id="page2Image"></image>
             <foreignObject id="page2Html"></foreignObject>
+          </g>
+          <g id="page1">
+            <image id="page1Image"></image>
+            <foreignObject id="page1Html"></foreignObject>
           </g>
         </g>
       </svg>
@@ -137,18 +144,21 @@
   <div id="helpOverlay">
     <section class="helpSection">
       <h2>Navigation</h2>
+      <p>
+        <b>NOTE: Reading goes right-to-left</b>
+      </p>
       <dl class="helplist">
         <dt>?</dt>
         <dd>Show/hide this help screen</dd>
 
         <dt>&#x2190; <span class="separator">/</span> &#x2192;</dt>
-        <dd>Go to previous / next page</dd>
+        <dd>Go to next / previous page</dd>
 
         <dt>Shift + &#x2190; <span class="separator">/</span> &#x2192;</dt>
         <dd>Go to first / last page</dd>
 
         <dt>[ <span class="separator">/</span> ]</dt>
-        <dd>Load previous / next book</dd>
+        <dd>Load next / previous book</dd>
 
         <dt>M</dt>
         <dd>Open/close the Menu</dd>
@@ -190,8 +200,8 @@
       </dl>
     </section>
     <ul class="helpLinks">
-      <li><a href="https://codedread.com/kthoom/privacy.html" target="_blank">Privacy Policy</a></li>
-      <li><a href="https://github.com/codedread/kthoom" target="_blank">GitHub Project</a></li>
+      <li><a href="https://s.kdy.ch/kthoom/privacy.html" target="_blank">Privacy Policy</a></li>
+      <li><a href="https://github.com/mkody/kthoom" target="_blank">GitHub Project</a></li>
     </ul>
   </div>
 
@@ -324,15 +334,15 @@
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
-    .then((registration) => {      
+    .then((registration) => {
       console.log(`Registered: ${registration}`);
     })
     .catch((error) => {
       console.log(`Registration failed: ${error}`);
     });
-  }  
+  }
 </script>
-  
+
 <script>
   (function (i, s, o, g, r, a, m) {
   i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {

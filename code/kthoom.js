@@ -178,15 +178,15 @@ export class KthoomApp {
           document.body.clientHeight, document.documentElement.clientHeight
       );
         if (swiperightBol &&  this.swipeDist_ >= 0) {
-          this.showPrevPage();
-        } else if (swiperightBol &&  this.swipeDist_ < 0) {
           this.showNextPage();
+        } else if (swiperightBol &&  this.swipeDist_ < 0) {
+          this.showPrevPage();
         } else if (swipetopBol && (touchobj.pageY - this.swipeStartY_) >= 0 &&
         Math.abs(this.swipeScrollY_ - window.scrollY) < 50 && window.scrollY == 0){
-          this.showPrevPage();
+          this.showNextPage();
         } else if (swipetopBol && (touchobj.pageY - this.swipeStartY_) < 0 &&
         Math.abs(this.swipeScrollY_ - window.scrollY) < 50 && (window.scrollY + window.innerHeight) == docHeight){
-          this.showNextPage();
+          this.showPrevPage();
         }
         this.swipeMode_ = false;
 
@@ -343,9 +343,9 @@ export class KthoomApp {
         case 3: clickedPrev = clickY > (bookHeight / 2); break;
       }
       if (clickedPrev) {
-        this.showPrevPage();
-      } else {
         this.showNextPage();
+      } else {
+        this.showPrevPage();
       }
     });
   }
@@ -568,7 +568,7 @@ export class KthoomApp {
     let canKeyPrev = (window.scrollX <= 0);
 
     switch (code) {
-      case Key.LEFT:
+      case Key.RIGHT:
         if (canKeyPrev) {
           if (evt.shiftKey) {
             this.bookViewer_.showPage(0);
@@ -577,7 +577,7 @@ export class KthoomApp {
           }
         }
         break;
-      case Key.RIGHT:
+      case Key.LEFT:
         if (canKeyNext) {
           if (evt.shiftKey) {
             this.bookViewer_.showPage(this.currentBook_.getNumberOfPages() - 1);
@@ -784,7 +784,7 @@ export class KthoomApp {
       if (this.readingStack_.getNumberOfBooks() == 1) {
         this.bookViewer_.showPage(this.currentBook_.getNumberOfPages() - 1);
       } else {
-        if (this.keysHeld_[Key.LEFT] <= 1) {
+        if (this.keysHeld_[Key.RIGHT] <= 1) {
           this.readingStack_.changeToPrevBook();
         }
       }
@@ -800,7 +800,7 @@ export class KthoomApp {
       if (this.readingStack_.getNumberOfBooks() == 1) {
         this.bookViewer_.showPage(0);
       } else {
-        if (this.keysHeld_[Key.RIGHT] <= 1) {
+        if (this.keysHeld_[Key.LEFT] <= 1) {
           this.readingStack_.changeToNextBook();
         }
       }
@@ -898,7 +898,7 @@ export class KthoomApp {
       this.currentBook_ = null;
       const bkgndEl = getElem('background');
       if (bkgndEl) {
-        bkgndEl.setAttribute('style', 'background-image: url("images/logo.svg")');
+        bkgndEl.setAttribute('style', 'background-image: url("images/safari-pinned-tab.svg")');
       }
       this.mainMenu_.showMenuItem('menu-close-all', false);
       for (const button of ['prevBook', 'prev', 'next', 'nextBook'].map(getElem)) {

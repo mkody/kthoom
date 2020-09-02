@@ -72,8 +72,8 @@ export class MenuCloseEvent extends MenuEvent {
 
 export class MenuItemSelectedEvent extends MenuEvent {
   /**
-   * @param {Menu} menu 
-   * @param {Element} item 
+   * @param {Menu} menu
+   * @param {Element} item
    */
   constructor(menu, item) {
     super(menu, MenuEventType.ITEM_SELECTED);
@@ -92,7 +92,7 @@ export class MenuItemSelectedEvent extends MenuEvent {
  */
 export class Menu extends EventEmitter {
   /**
-   * @param {HTMLTemplateElement} templateEl 
+   * @param {HTMLTemplateElement} templateEl
    */
   constructor(templateEl) {
     super();
@@ -234,7 +234,7 @@ export class Menu extends EventEmitter {
 
     const code = evt.keyCode;
 
-    const closeKeys = [Key.ESCAPE, Key.TAB, Key.LEFT];
+    const closeKeys = [Key.ESCAPE, Key.TAB, Key.RIGHT];
     if (this.openedSubMenu_ && !closeKeys.includes(code)) {
       return this.openedSubMenu_.handleKeyEvent(evt);
     }
@@ -317,7 +317,7 @@ export class Menu extends EventEmitter {
   /**
    * Sets the selected state on a menu item.  Assumes the menu item has a span with the
    * menuCheckmark class.
-   * @param {string} itemId 
+   * @param {string} itemId
    * @param {boolean} selected True to select, false to de-select.
    */
   setMenuItemSelected(itemId, selected) {
@@ -329,7 +329,7 @@ export class Menu extends EventEmitter {
   }
 
   /**
-   * @param {string} itemId 
+   * @param {string} itemId
    * @param {boolean} show True to show, false to hide.
    */
   showMenuItem(itemId, show) {

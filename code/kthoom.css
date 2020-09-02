@@ -39,7 +39,7 @@ body {
   background-color: rgba(50, 50, 50, 0.95);
   border-radius: 1em;
   bottom: 25px;
-  color: yellow;
+  color: white;
   display: none;
   font-size: 1.2em;
   left: 50px;
@@ -128,8 +128,8 @@ dl.helplist dd {
 
 .navbutton:hover:not([disabled]), .navbutton:focus {
   background-color: #444;
-  border-color: yellow;
-  color: yellow;
+  border-color: white;
+  color: white;
 }
 
 #close {
@@ -182,8 +182,8 @@ dl.helplist dd {
 }
 
 .menuButton:hover, .menuButton:focus {
-  border: solid 1px yellow;
-  color: yellow;
+  border: solid 1px white;
+  color: white;
 }
 
 #menu {
@@ -197,7 +197,7 @@ dl.helplist dd {
 }
 
 .menuSeparator {
-  border-top: solid .1px yellow;
+  border-top: solid .1px white;
 }
 
 span.subMenuArrow,
@@ -222,7 +222,7 @@ span.menuCheckmark {
 
 ul.menuItems {
   background-color: black;
-  border: solid 1px yellow;
+  border: solid 1px white;
   border-radius: 5px 5px 5px 5px;
   left: 5px;
   list-style: none;
@@ -243,7 +243,7 @@ ul.menuItems li {
 .menuItem {
   background-color: black;
   border: none;
-  color: yellow;
+  color: white;
   cursor: pointer;
   font-size: 1em;
   margin: 2px;
@@ -300,7 +300,7 @@ div.pageDiv {
 }
 
 button:focus {
-  outline: solid 2px yellow;
+  outline: solid 2px white;
 }
 
 #header.preview {
@@ -356,8 +356,8 @@ button:focus {
 
 #readingStackButton:hover:not([disabled]), #readingStackButton:focus {
   background-color: #444;
-  color: yellow;
-  border-color: yellow;
+  color: white;
+  border-color: white;
 }
 
 #readingStackContents {
@@ -377,8 +377,8 @@ button:focus {
 }
 
 #readingStack.opened {
-  border-color: yellow;
-  color: yellow;
+  border-color: white;
+  color: white;
   margin-left: 0;
 }
 
@@ -399,15 +399,15 @@ button:focus {
 
 .readingStackBook:hover {
   background-color: #444;
-  border-bottom: solid 1px yellow;
-  border-top: solid 1px yellow;
+  border-bottom: solid 1px white;
+  border-top: solid 1px white;
 }
 
 /* TODO: Remove current class and use focus for reading stack. */
 .menuItem:focus,
 .readingStackBook.current {
   background-color: #cc2929;
-  outline: solid 2px yellow;
+  outline: solid 2px white;
 }
 
 .readingStackBook.loaded {
@@ -421,7 +421,7 @@ button:focus {
 }
 
 .readingStackBookCloseButton:hover {
-  color: yellow;
+  color: white;
 }
 
 [draggable] {
@@ -433,7 +433,7 @@ button:focus {
 }
 
 .dropTarget {
-  border-top: solid 2px yellow;
+  border-top: solid 2px white;
 }
 
 :-webkit-full-screen .invisibleinfullscreen {

@@ -2,14 +2,14 @@
 
 kthoom is a comic book / ebook reader that runs in the browser using client-side open web technologies such as JavaScript, HTML5, the File API, Web Workers, and Typed Arrays.  It can open files from your local hard drive, the network, or Google Drive.
 
-[OPEN KTHOOM COMIC BOOK READER](https://codedread.com/kthoom/index.html).
+[OPEN KTHOOM COMIC BOOK READER](https://s.kdy.ch/kthoom/index.html).
 
 You can also specify a comic book to load via the ?bookUri parameter.  Some examples:
 
-  * https://codedread.github.io/kthoom/index.html?bookUri=examples/codedread.cbz
-  * https://codedread.github.io/kthoom/index.html?bookUri=examples/wizard-of-oz.epub
+  * https://s.kdy.ch/kthoom/index.html?bookUri=examples/codedread.cbz
+  * https://s.kdy.ch/kthoom/index.html?bookUri=examples/wizard-of-oz.epub
 
-Or a [comic book reading list](https://github.com/codedread/kthoom/tree/master/reading-lists) via the ?readingListUri parameter.
+Or a [comic book reading list](https://github.com/mkody/kthoom/tree/master/reading-lists) via the ?readingListUri parameter.
 
 ## Documentation
 
@@ -41,4 +41,4 @@ NOTE: kthoom loads in local compressed files and decompresses them in the browse
 
 ### JSON Reading Lists
 
-kthoom supports loading lists of comic book files at once.  Think audio playlists but for comic books!  See [JSON Reading Lists](https://github.com/codedread/kthoom/tree/master/reading-lists) for more.
+kthoom supports loading lists of comic book files at once.  Think audio playlists but for comic books!  See [JSON Reading Lists](https://github.com/mkody/kthoom/tree/master/reading-lists) for more.

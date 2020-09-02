@@ -438,13 +438,14 @@ export class BookViewer {
       pt2 = pt1;
 
       // Now size the page elements.
-      for (const pageElem of page1Elems) {
+      // HACK: inverted the two pageNElems for manga order
+      for (const pageElem of page2Elems) {
         pageElem.setAttribute('x', pl1);
         pageElem.setAttribute('y', pt1);
         pageElem.setAttribute("width", pw);
         pageElem.setAttribute("height", ph);
       }
-      for (const pageElem of page2Elems) {
+      for (const pageElem of page1Elems) {
         pageElem.setAttribute('x', pl2);
         pageElem.setAttribute('y', pt2);
         pageElem.setAttribute("width", pw);
