@@ -61,7 +61,34 @@ export class KthoomApp {
     this.viewerContextMenu_ = null;
 
     /** @private {boolean} */
+
     this.hasHelpOverlay_ = getElem('helpOverlay');
+    /** @private {Swipe} */
+    this.swipeStartX_ = 0;
+
+    /** @private {Swipe} */
+    this.swipeStartY_ = 0;
+
+    /** @private {Swipe} */
+    this.swipeDist_ = 0;
+
+    /** @private {Swipe} */
+    this.swipeThreshold_ = 150; //required min distance traveled to be considered swipe
+
+    /** @private {Swipe} */
+    this.swipeAllowedTime_ = 500; // maximum time allowed to travel that distance
+
+    /** @private {Swipe} */
+    this.swipeElapsedTime_;
+
+    /** @private {Swipe} */
+    this.swipeStartTime_;
+
+    /** @private {Swipe} */
+    this.swipeMode_ = false;
+
+    /** @private {Swipe} */
+    this.swipeScrollY_ = 0;
 
     // This Promise resolves when kthoom is ready.
     this.initializedPromise_ = new Promise((resolve, reject) => {
@@ -101,6 +128,8 @@ export class KthoomApp {
     this.initResizeHandler_();
     this.initWheelScroll_();
     this.initUnloadHandler_();
+    this.initTouchSwipe_();
+
 
     document.addEventListener('keydown', (e) => this.keyHandler_(e), false);
     document.addEventListener('keyup', (e) => this.keysHeld_[e.keyCode] = 0);
@@ -112,6 +141,58 @@ export class KthoomApp {
 
     console.log('kthoom initialized');
   }
+
+  initTouchSwipe_(){
+
+    document.addEventListener('touchstart', e=>{
+        var touchobj = e.changedTouches[0];
+        this.swipeDist_ = 0;
+        this.swipeStartX_ = touchobj.pageX;
+        this.swipeStartY_ = touchobj.pageY;
+        this.swipeStartTime_ = new Date().getTime(); // record time when finger first makes contact with surface
+        this.swipeMode_ = true;
+        this.swipeScrollY_ = window.scrollY;
+//        e.preventDefault();
+    })
+
+    document.addEventListener('touchmove', e=>{
+      if (this.swipeMode_) {
+//        e.preventDefault(); // prevent scrolling when inside DIV
+      }
+    })
+
+    document.addEventListener('touchend',  e=>{
+        var touchobj = e.changedTouches[0]
+        this.swipeDist_ = touchobj.pageX - this.swipeStartX_ // get total dist traveled by finger while in contact with surface
+        this.swipeElapsedTime_ = new Date().getTime() - this.swipeStartTime_ // get time elapsed
+        // check that elapsed time is within specified, horizontal dist traveled >= threshold, and vertical dist traveled <= 100
+
+        var swiperightBol = (this.swipeElapsedTime_ <= this.swipeAllowedTime_ && Math.abs(this.swipeDist_) >= this.swipeThreshold_ && Math.abs(touchobj.pageY - this.swipeStartY_) <= 100)
+        var swipetopBol = (this.swipeElapsedTime_ <= this.swipeAllowedTime_ && Math.abs(touchobj.pageY - this.swipeStartY_) >= this.swipeThreshold_ && Math.abs(touchobj.pageX - this.swipeStartX_) <= 100)
+//        var swiperightBol = (this.swipeElapsedTime_ <= this.swipeAllowedTime_ && this.swipeDist_ >= this.swipeThreshold_ && Math.abs(touchobj.pageY - this.swipeStartY_) <= 100)
+        // Call function
+
+        var docHeight = Math.max(
+          document.body.scrollHeight, document.documentElement.scrollHeight,
+          document.body.offsetHeight, document.documentElement.offsetHeight,
+          document.body.clientHeight, document.documentElement.clientHeight
+      );
+        if (swiperightBol &&  this.swipeDist_ >= 0) {
+          this.showPrevPage();
+        } else if (swiperightBol &&  this.swipeDist_ < 0) {
+          this.showNextPage();
+        } else if (swipetopBol && (touchobj.pageY - this.swipeStartY_) >= 0 &&
+        Math.abs(this.swipeScrollY_ - window.scrollY) < 50 && window.scrollY == 0){
+          this.showPrevPage();
+        } else if (swipetopBol && (touchobj.pageY - this.swipeStartY_) < 0 &&
+        Math.abs(this.swipeScrollY_ - window.scrollY) < 50 && (window.scrollY + window.innerHeight) == docHeight){
+          this.showNextPage();
+        }
+        this.swipeMode_ = false;
+
+    })
+  }
+
 
   /** @private */
   initMenus_() {
@@ -417,6 +498,7 @@ export class KthoomApp {
     let isMenuOpen = this.mainMenu_.isOpen();
     let isReadingStackOpen = this.readingStack_.isOpen();
 
+
     if (isMenuOpen) {
       // If the menu handled the key, then we are done.
       if (this.mainMenu_.handleKeyEvent(evt)) {
@@ -480,7 +562,7 @@ export class KthoomApp {
 
     if (evt.ctrlKey || evt.metaKey) return;
 
-    if (getComputedStyle(getElem('progress')).display == 'none') return;
+//    if (getComputedStyle(getElem('progress')).display == 'none') return;
 
     let canKeyNext = ((document.body.offsetWidth + document.body.scrollLeft) / document.body.scrollWidth) >= 1;
     let canKeyPrev = (window.scrollX <= 0);

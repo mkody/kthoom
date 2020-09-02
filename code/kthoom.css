@@ -320,7 +320,7 @@ button:focus {
   display: -ms-flex;
   display: -webkit-flex;
   display: flex;
-  margin-left: -21em;
+  margin-left: -31em;
   opacity: 0.875;
   position: fixed;
   left: 0px;
@@ -372,7 +372,7 @@ button:focus {
   padding: 10px;
   text-align: left;
   white-space: nowrap;
-  width: 20em;
+  width: 30em;
   z-index: 1;
 }
 
@@ -384,7 +384,7 @@ button:focus {
 
 .readingStackBookInner {
   float: left;
-  max-width: 280px;
+  max-width: 420px;
   overflow: hidden;
   pointer-events: none;
   text-overflow: ellipsis;
@@ -434,4 +434,20 @@ button:focus {
 
 .dropTarget {
   border-top: solid 2px yellow;
+}
+
+:-webkit-full-screen .invisibleinfullscreen {
+  display: none;
+}
+
+:-moz-full-screen .invisibleinfullscreen {
+  display: none;
+}
+
+:-ms-fullscreen .invisibleinfullscreen {
+  display: none;
+}
+
+:fullscreen .invisibleinfullscreen {
+  display: none;
 }
